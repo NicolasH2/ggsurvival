@@ -51,7 +51,7 @@ You can modify the appearance of the graph as you usually would. However, geom_s
 ggplot() +
   geom_surv(aes(time, status, color=condition1, linetype=condition2), data=survtest, surv_pretty=T)
 
-#this will create exactly the same plot
+#this will create the exact same plot
 ggplot() +
   geom_surv(aes(time, status, color=condition1, linetype=condition2), data=survtest) +
   scale_color_manual(values=c("blue","red")) +
