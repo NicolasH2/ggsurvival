@@ -23,10 +23,10 @@
 #' )
 #'
 #' ggplot() +
-#'   geom_survLines(aes(time, status, color=condition), data=survtest)
-#'   geom_survTicks(aes(time, status, color=condition), data=survtest)
+#'   geom_survLines(survtest, aes(time, status, color=condition))
+#'   geom_survTicks(survtest, aes(time, status, color=condition))
 #'
-geom_survTicks <- function(mapping, data, ticks="segment", ...){
+geom_survTicks <- function(data, mapping, ticks="segment", ...){
 
   output <- geom_surv(mapping=mapping, data=data, ticks=ticks, ...)
   output <- output["ticks"]
