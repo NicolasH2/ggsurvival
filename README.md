@@ -51,4 +51,4 @@ ggplot() +
   scale_color_manual(values=c("blue","red"))
 ```
 
-<img src="readme_files/surv1.png"/>
+<img src="readme_files/surv2.png"/>
