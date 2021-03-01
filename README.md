@@ -28,7 +28,7 @@ ggplot() +
 
 <img src="readme_files/surv1.png"/>
 
-That's already it! Your data.frame needs to have at least 2 columns: one for the survival time and one for the survival status. For the status column take care that the following is true:
+That's already it! Your data.frame needs to have at least 2 columns: one for the survival time and one for the survival status. In aes(x,y), time has to be assigned to x and status has to be assigned to y. You can name these columns however you want. For the status column take care that the following is true:
 - 2: death
 - 1: censored (drop out of study)
 - NA: will be ignored
@@ -40,3 +40,5 @@ The survival curve follows a couple of rules:
 3) With each censored event, following death events lead to a larger drop.
 4) If a censored event is the last event, the curve will not drop to 0 but remain at where it is right now.
 5) An alive status will not lead to a drop but may mark the end of the line if it is the last event.
+
+You probably also have a column by which you distinguish samples, e.g. mutation, sex, etc. In ggsurvival you can have up to 2 of such columns. The parameters in geom_surv's aes() you can use for this are color and <b>linetype</b>.
