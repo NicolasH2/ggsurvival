@@ -8,7 +8,7 @@ Install the ggbrace package from the git repository:
 devtools::install_github("solatar/ggsurvival")
 ```
 
-## Default braces
+## Create a survival curve
 Load the package, create your survival plot:
 ``` r
 library(ggsurvival)
@@ -43,6 +43,8 @@ The survival curve follows a couple of rules:
 
 You probably also have a column by which you distinguish samples, e.g. mutation, sex, etc. In ggsurvival you can have up to 2 of such columns. The parameters in geom_surv's aes() you can use for this are <b>color</b> and <b>linetype</b>.
 
+## Modify the graph
+
 You can modify the appearance of the graph as you usually would.
 
 ``` r
@@ -52,3 +54,14 @@ ggplot() +
 ```
 
 <img src="readme_files/surv2.png"/>
+
+``` r
+ggplot() +
+  geom_hline(yintercept=50, linetype="dashed") +
+  geom_surv(aes(time, status, color=condition1, linetype=condition2), data=survtest) +
+  scale_color_manual(values=c("blue","red")) +
+  scale_x_continuous(expand=c(0,0)) +
+  scale_y_continuous(expand=c(0,0)) +
+  labs(x="time (months)", y="% survival", color="genotype", linetype="sex") +
+  theme_classic()
+```
