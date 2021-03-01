@@ -25,7 +25,7 @@
 #'
 #' ggplot() + geom_surv(aes(time, status, color=condition), data=survtest)
 #'
-geom_surv <- function(mapping=NULL, data=NULL, surv_pretty=FALSE, ...){
+geom_surv <- function(mapping=NULL, data=NULL, ticks="segment", surv_pretty=FALSE, ...){
   
   calculation <- .survconditions(data=data, mapping=mapping)
   plotLines <- calculation[["plotLines"]]
@@ -43,20 +43,23 @@ geom_surv <- function(mapping=NULL, data=NULL, surv_pretty=FALSE, ...){
   )
   
   mapping$linetype <- NULL
-  mapping$xend <- mapping$x
-  mapping$yend <- mapping$y
-  mapping$yend[[2]] <- expr(proportion + 0.8)
   
-  
+  if(ticks %in% "segment"){
+    mapping$xend <- mapping$x
+    mapping$yend <- mapping$y
+    mapping$yend[[2]] <- expr(proportion + 0.8)
+  }
+    
   output2 <- ggplot2::layer(
     data=plotTicks,
     mapping=mapping,
-    geom="segment",
+    geom=ticks,
     stat="identity",
     position="identity",
     show.legend=FALSE,
     params=list(...)
   )
+  
   output <- list(lines=output1, ticks=output2)
   
   if(surv_pretty){
