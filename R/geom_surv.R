@@ -23,7 +23,7 @@
 #'   condition = sample(c("wt","ko"), 50, replace = T)
 #' )
 #'
-#' ggplot() + geom_surv(aes(time, status, color=condition), data=survtest)
+#' ggplot() + geom_surv(data=survtest, aes(time, status, color=condition))
 #'
 geom_surv <- function(data, mapping, ticks="segment", surv_pretty=FALSE, ...){
   
