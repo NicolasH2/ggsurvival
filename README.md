@@ -28,7 +28,9 @@ ggplot() +
 
 <img src="readme_files/surv1.png"/>
 
-That's already it! Your data.frame needs to have at least 2 columns: one for the survival time and one for the survival status. In aes(x,y), time has to be assigned to x and status has to be assigned to y. You can name these columns however you want. For the status column, events are specified like this:
+That's already it! However, note that geom_surv does not take the data and aes arguement from the ggplot general function. They always have to be provided directly in geom_surv.
+
+Your data.frame needs to have at least 2 columns: one for the survival time and one for the survival status. In aes(x,y), time has to be assigned to x and status has to be assigned to y. You can name these columns however you want. For the status column, events are specified like this:
 - NA: will be ignored
 - 1: death event
 - everything else: censored event
