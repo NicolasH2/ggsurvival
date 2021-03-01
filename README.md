@@ -23,12 +23,12 @@ survtest <- data.frame(
 )
 
 ggplot() +
-  geom_surv(aes(time, status, color=condition1, linetype=condition2), data=survtest)
+  geom_surv(data=survtest, mapping=aes(time, status, color=condition1, linetype=condition2))
 ```
 
 <img src="readme_files/surv1.png"/>
 
-That's already it! However, note that geom_surv does not take the data and aes arguement from the ggplot general function. They always have to be provided directly in geom_surv.
+That's already it! However, note that geom_surv does not take the data and mapping arguement from the ggplot general function. They always have to be provided directly in geom_surv.
 
 Your data.frame needs to have at least 2 columns: one for the survival time and one for the survival status. In aes(x,y), time has to be assigned to x and status has to be assigned to y. You can name these columns however you want. For the status column, events are specified like this:
 - NA: will be ignored
@@ -49,7 +49,7 @@ First of all you can change the ticks if you like. Use the ticks parameter in th
 
 ``` r
 ggplot() + 
-  geom_surv(aes(time, status, color=condition1, linetype=condition2), data=survtest, ticks = "point")
+  geom_surv(survtest, aes(time, status, color=condition1, linetype=condition2), ticks = "point")
 ```
 <img src="readme_files/surv2.png"/>
 
@@ -57,7 +57,7 @@ This also allows you to change the shape of the points, although it will give yo
 
 ``` r
 ggplot() + 
-  geom_surv(aes(time, status, color=condition1, linetype=condition2), data=survtest, ticks = "point", shape=2)
+  geom_surv(survtest, aes(time, status, color=condition1, linetype=condition2), ticks = "point", shape=2)
 ```
 <img src="readme_files/surv3.png"/>
 
@@ -65,11 +65,11 @@ You can modify the residual appearance of the graph as you usually would. Howeve
 
 ``` r
 ggplot() +
-  geom_surv(aes(time, status, color=condition1, linetype=condition2), data=survtest, surv_pretty=T)
+  geom_surv(survtest, aes(time, status, color=condition1, linetype=condition2), surv_pretty=T)
 
 #this will create the exact same plot
 ggplot() +
-  geom_surv(aes(time, status, color=condition1, linetype=condition2), data=survtest) +
+  geom_surv(survtest, aes(time, status, color=condition1, linetype=condition2)) +
   scale_color_manual(values=c("blue","red")) +
   scale_x_continuous(expand=c(0,0)) +
   scale_y_continuous(expand=c(0,0)) +
@@ -83,7 +83,7 @@ Use your usual ggplot modifications to change the graph as you whish.
 ``` r
 ggplot() +
   geom_hline(yintercept=50, linetype="dashed") +
-  geom_surv(aes(time, status, color=condition1, linetype=condition2), data=survtest, surv_pretty=T) +
+  geom_surv(survtest, aes(time, status, color=condition1, linetype=condition2), surv_pretty=T) +
   labs(x="time (months)", y="% survival", color="genotype", linetype="sex")
 ```
 
@@ -95,8 +95,8 @@ ggsurvival also offers the functions geom_survLines and geom_survTicks to modify
 
 ``` r
 ggplot() +
-  geom_survLines(aes(time, status), data=survtest, color="blue") +
-  geom_survTicks(aes(time, status), data=survtest, color="red", ticks="point")
+  geom_survLines(survtest, aes(time, status), color="blue") +
+  geom_survTicks(survtest, aes(time, status), color="red", ticks="point")
 ```
 
 <img src="readme_files/surv6.png"/>
