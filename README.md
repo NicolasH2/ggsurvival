@@ -41,4 +41,6 @@ The survival curve follows a couple of rules:
 4) If a censored event is the last event, the curve will not drop to 0 but remain at where it is right now.
 5) An alive status will not lead to a drop but may mark the end of the line if it is the last event.
 
-You probably also have a column by which you distinguish samples, e.g. mutation, sex, etc. In ggsurvival you can have up to 2 of such columns. The parameters in geom_surv's aes() you can use for this are color and <b>linetype</b>.
+You probably also have a column by which you distinguish samples, e.g. mutation, sex, etc. In ggsurvival you can have up to 2 of such columns. The parameters in geom_surv's aes() you can use for this are <b>color</b> and <b>linetype</b>.
+
+You can modify the appearance of the graph as you usually would.
