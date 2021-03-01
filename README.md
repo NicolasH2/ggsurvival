@@ -65,3 +65,5 @@ ggplot() +
   labs(x="time (months)", y="% survival", color="genotype", linetype="sex") +
   theme_classic()
 ```
+
+<img src="readme_files/surv3.png"/>
