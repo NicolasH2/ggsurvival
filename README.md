@@ -53,7 +53,7 @@ ggplot() +
 ```
 <img src="readme_files/surv2.png"/>
 
-This also allows you to change the shape of the points:
+This also allows you to change the shape of the points, although it will give you a warning message because the shape parameter is only known by the ticks, not by the line.
 
 ``` r
 ggplot() + 
