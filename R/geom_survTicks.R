@@ -26,9 +26,9 @@
 #'   geom_survLines(aes(time, status, color=condition), data=survtest)
 #'   geom_survTicks(aes(time, status, color=condition), data=survtest)
 #'
-geom_survTicks <- function(mapping, data, ...){
+geom_survTicks <- function(mapping, datasurv_pretty=FALSE, ...){
 
-  output <- geom_surv(mapping=mapping, data=data, tickheight=tickheight, ...)
+  output <- geom_surv(mapping=mapping, data=data, surv_pretty=surv_pretty, ...)
   output <- output["ticks"]
   return(output)
 
