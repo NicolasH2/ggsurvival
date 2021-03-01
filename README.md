@@ -79,7 +79,8 @@ ggsurvival also offers the functions geom_survLines and geom_survTicks to modify
 
 ``` r
 ggplot() +
-  geom_hline(yintercept=50, linetype="dashed") +
-  geom_survLines(aes(time, status), data=survtest, color="red")
-  geom_survTicks(aes(time, status), data=survtest, color="blue")
+  geom_survLines(aes(time, status), data=survtest, color="blue")
+  geom_survTicks(aes(time, status), data=survtest, color="red")
 ```
+
+<img src="readme_files/surv4.png"/>
