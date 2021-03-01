@@ -25,7 +25,7 @@
 #'
 #' ggplot() + geom_surv(aes(time, status, color=condition), data=survtest)
 #'
-geom_surv <- function(mapping=NULL, data=NULL, ticks="segment", surv_pretty=FALSE, ...){
+geom_surv <- function(data, mapping, ticks="segment", surv_pretty=FALSE, ...){
   
   calculation <- .survconditions(data=data, mapping=mapping)
   plotLines <- calculation[["plotLines"]]
