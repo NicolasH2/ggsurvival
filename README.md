@@ -14,6 +14,7 @@ Load the package, create your survival plot:
 library(ggsurvival)
 library(ggplot2)
 
+#to showcase ggsurvival, let's create a test data.frame
 survtest <- data.frame(
   time = sample(seq(30),50,replace = T),
   status = sample(1:2, 50, replace = T),
@@ -26,3 +27,16 @@ ggplot() +
 ```
 
 <img src="readme_files/surv1.png"/>
+
+That's already it! Your data.frame needs to have at least 2 columns: one for the survival time and one for the survival status. For the status column take care that the following is true:
+- 2: death
+- 1: censored (drop out of study)
+- NA: will be ignored
+- everything else: alive
+
+The survival curve follows a couple of rules:
+1) The total sample number is normalized to 100 for each condition.
+2) In the beginning a death event will lead to a drop of 1 unit (a unit is number of samples / 100).
+3) With each censored event, following death events lead to a larger drop.
+4) If a censored event is the last event, the curve will not drop to 0 but remain at where it is right now.
+5) An alive status will not lead to a drop but may mark the end of the line if it is the last event.
