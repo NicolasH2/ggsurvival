@@ -45,7 +45,23 @@ You probably also have a column by which you distinguish samples, e.g. mutation,
 
 ## Modify the graph
 
-You can modify the appearance of the graph as you usually would. However, geom_surv comes with an inbuilt option to set certain parameters to make the graph more pretty. Unlock this simply by specifying surv_pretty as TRUE.
+First of all you can change the ticks if you like. Use the ticks parameter in the geom_surv function.
+
+``` r
+ggplot() + 
+  geom_surv(aes(time, status, color=condition1, linetype=condition2), data=survtest, ticks = "point")
+```
+<img src="readme_files/surv2.png"/>
+
+This also allows you to change the shape of the points:
+
+``` r
+ggplot() + 
+  geom_surv(aes(time, status, color=condition1, linetype=condition2), data=survtest, ticks = "point", shape=2)
+```
+<img src="readme_files/surv3.png"/>
+
+You can modify the residual appearance of the graph as you usually would. However, geom_surv comes with an inbuilt option to set certain parameters to make the graph more pretty. Unlock this simply by specifying surv_pretty as TRUE.
 
 ``` r
 ggplot() +
@@ -60,7 +76,7 @@ ggplot() +
   theme_classic()
 ```
 
-<img src="readme_files/surv2.png"/>
+<img src="readme_files/surv4.png"/>
 
 Use your usual ggplot modifications to change the graph as you whish.
 
@@ -71,7 +87,7 @@ ggplot() +
   labs(x="time (months)", y="% survival", color="genotype", linetype="sex")
 ```
 
-<img src="readme_files/surv3.png"/>
+<img src="readme_files/surv5.png"/>
 
 ## Plot lines and ticks seperately
 
@@ -79,8 +95,8 @@ ggsurvival also offers the functions geom_survLines and geom_survTicks to modify
 
 ``` r
 ggplot() +
-  geom_survLines(aes(time, status), data=survtest, color="blue")
-  geom_survTicks(aes(time, status), data=survtest, color="red")
+  geom_survLines(aes(time, status), data=survtest, color="blue") +
+  geom_survTicks(aes(time, status), data=survtest, color="red", ticks="point")
 ```
 
-<img src="readme_files/surv4.png"/>
+<img src="readme_files/surv6.png"/>
