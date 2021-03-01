@@ -30,6 +30,8 @@ geom_surv <- function(data, mapping, ticks="segment", surv_pretty=FALSE, ...){
   calculation <- .survconditions(data=data, mapping=mapping)
   plotLines <- calculation[["plotLines"]]
   plotTicks <- calculation[["plotTicks"]]
+  mapping$x[[2]] <- expr(time)
+  mapping$y[[2]] <- expr(proportion)
   
   output1 <- ggplot2::layer(
     data=plotLines,
@@ -140,7 +142,7 @@ geom_surv <- function(data, mapping, ticks="segment", surv_pretty=FALSE, ...){
     if(idropouts>0) plotTicks <- rbind(plotTicks, data.frame(x=ix, y=iy))
   }
 
-  colnames(plotLines) <- c(time, status)
+  colnames(plotLines) <- c("time", "proportion")
   colnames(plotTicks) <- colnames(plotLines)
   plotLines[,color] <- as.character(colorcondition)
   plotTicks[,color] <- as.character(colorcondition)
