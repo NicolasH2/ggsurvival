@@ -23,10 +23,10 @@
 #' )
 #'
 #' ggplot() +
-#'   geom_survLines(aes(time, status, color=condition), data=survtest)
-#'   geom_survTicks(aes(time, status, color=condition), data=survtest)
+#'   geom_survLines(survtest, aes(time, status, color=condition))
+#'   geom_survTicks(survtest, aes(time, status, color=condition))
 #'
-geom_survLines <- function(mapping, data, ...){
+geom_survLines <- function(data, mapping, ...){
 
   output <- geom_surv(mapping=mapping, data=data, ...)
   output <- output["lines"]
