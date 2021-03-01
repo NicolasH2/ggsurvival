@@ -62,15 +62,24 @@ ggplot() +
 
 <img src="readme_files/surv2.png"/>
 
+Use your usual ggplot modifications to change the graph as you whish.
+
 ``` r
 ggplot() +
   geom_hline(yintercept=50, linetype="dashed") +
-  geom_surv(aes(time, status, color=condition1, linetype=condition2), data=survtest) +
-  scale_color_manual(values=c("blue","red")) +
-  scale_x_continuous(expand=c(0,0)) +
-  scale_y_continuous(expand=c(0,0)) +
-  labs(x="time (months)", y="% survival", color="genotype", linetype="sex") +
-  theme_classic()
+  geom_surv(aes(time, status, color=condition1, linetype=condition2), data=survtest, surv_pretty=T) +
+  labs(x="time (months)", y="% survival", color="genotype", linetype="sex")
 ```
 
 <img src="readme_files/surv3.png"/>
+
+## Plot lines and ticks seperately
+
+ggsurvival also offers the functions geom_survLines and geom_survTicks to modify these components.
+
+``` r
+ggplot() +
+  geom_hline(yintercept=50, linetype="dashed") +
+  geom_survLines(aes(time, status), data=survtest, color="red")
+  geom_survTicks(aes(time, status), data=survtest, color="blue")
+```
