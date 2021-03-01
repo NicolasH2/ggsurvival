@@ -36,7 +36,7 @@ That's already it! Your data.frame needs to have at least 2 columns: one for the
 The survival curve follows a couple of rules:
 1) The total sample number is normalized to 100 for each condition.
 2) In the beginning a death event will lead to a drop of 1 unit (a unit is: 100 / number of samples).
-3) With each censored event, death events that come afterwards lead to a larger drop.
+3) With each censored event, death events that come afterwards or at the same time lead to a larger drop.
 4) A censored event does not lead to a drop. Therefore, if the last event is censored, the curve will not drop to 0.
 
 You probably also have a column by which you distinguish samples, e.g. mutation, sex, etc. In ggsurvival you can have up to 2 of such columns. The parameters in geom_surv's aes() you can use for this are <b>color</b> and <b>linetype</b>.
