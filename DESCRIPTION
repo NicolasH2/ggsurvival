@@ -1,11 +1,10 @@
 Package: ggsurvival
 Type: Package
-Title: What the Package Does (Title Case)
+Title: survival plots in ggplot2
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Author: Nicolas Huber
+Maintainer: Nicolas Huber <info.huber@aol.de>
+Description:  Lets you easily plot survival information in ggplot2 in a highly modifyable way. The survival curve is just a layer and you can adjust all ggplot2 parameters as you usually would.
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
