@@ -16,9 +16,9 @@ library(ggplot2)
 
 #to showcase ggsurvival, let's create a test data.frame
 survtest <- data.frame(
-  time = sample(seq(30), 50,replace = T),
-  status = sample(1:2, 50, replace = T),
-  condition1 = sample(c("wt","ko"), 50, replace = T),
+  time =       sample(seq(30),             50, replace = T),
+  status =     sample(1:2,                 50, replace = T),
+  condition1 = sample(c("wt","ko"),        50, replace = T),
   condition2 = sample(c("female", "male"), 50, replace = T)
 )
 
