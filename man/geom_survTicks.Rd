@@ -4,7 +4,7 @@
 \alias{geom_survTicks}
 \title{create the ticks of a survival curve as a layer ready to be added to a ggplot object}
 \usage{
-geom_survTicks(mapping, data, ...)
+geom_survTicks(mapping, data, ticks = "segment", ...)
 }
 \arguments{
 \item{mapping}{aes object, created with aes(). Provide x (time) and y (status). Optionally you can provide color and linetype to distinguish conditions. For the status: NA will be irgnored, 1 = dropped out, 2 = dead, any other value = alive.}
