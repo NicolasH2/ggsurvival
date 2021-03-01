@@ -44,3 +44,11 @@ The survival curve follows a couple of rules:
 You probably also have a column by which you distinguish samples, e.g. mutation, sex, etc. In ggsurvival you can have up to 2 of such columns. The parameters in geom_surv's aes() you can use for this are <b>color</b> and <b>linetype</b>.
 
 You can modify the appearance of the graph as you usually would.
+
+``` r
+ggplot() +
+  geom_surv(aes(time, status, color=condition1, linetype=condition2), data=survtest) +
+  scale_color_manual(values=c("blue","red"))
+```
+
+<img src="readme_files/surv1.png"/>
