@@ -88,7 +88,11 @@ geom_surv <- function(mapping=NULL, data=NULL, surv_pretty=FALSE, ...){
   data <- data[,c(time,status,color,linetype)]
   data <- as.data.frame(na.omit(data))
 
-  data$cOnDiTiOnS <- paste(data[,color], data[,linetype])
+  if(length(color)>0 | length(linetype)>0){
+    data$cOnDiTiOnS <- paste0(data[,color], data[,linetype])
+  }else{
+    data$cOnDiTiOnS <- "normal"
+  }
   conditions <- unique(data$cOnDiTiOnS)
 
   tables <- lapply(conditions, function(x) subset(data, cOnDiTiOnS %in% x))
