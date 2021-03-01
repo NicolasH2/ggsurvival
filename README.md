@@ -1,6 +1,6 @@
 # ggsurvival
 
-This package lets you easily plot survival information in [ggplot2](https://ggplot2.tidyverse.org/).
+This package lets you easily plot survival information in [ggplot2](https://ggplot2.tidyverse.org/) in a highly modifyable way. The survival curve is just a layer and you can adjust all ggplot2 parameters as you usually would.
 
 ## Installation
 Install the ggbrace package from the git repository:
