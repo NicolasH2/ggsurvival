@@ -131,10 +131,11 @@ geom_surv <- function(mapping=NULL, data=NULL, ticks="segment", surv_pretty=FALS
     ix <- freqTable$time[i] #time
 
     isamples <- data[ data[,time]==ix , ]
-    idropouts <- nrow( isamples[ isamples[,status] %in% "1" , ] )
-    ideaths <-   nrow( isamples[ isamples[,status] %in% "2" , ] )
+    ialive <-    nrow( isamples[ !isamples[,status] %in% c("1","2")]) #samples that did not die or drop out, but their life is only recorded until this point
+    idropouts <- nrow( isamples[ isamples[,status] %in% "1" , ] ) #censored events
+    ideaths <-   nrow( isamples[ isamples[,status] %in% "2" , ] ) #actual events (death)
 
-    nremain <- nremain-idropouts
+    nremain <- nremain-idropouts-ialive
     iy2 <- iy - (ideaths * iy/nremain) #iy2=iy if there were only dropouts and no deaths; iy2<i< if there were deaths
     nremain <- nremain-ideaths
 
