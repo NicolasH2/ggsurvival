@@ -28,7 +28,7 @@ ggplot() +
 
 <img src="readme_files/surv1.png"/>
 
-That's already it! Your data.frame needs to have at least 2 columns: one for the survival time and one for the survival status. In aes(x,y), time has to be assigned to x and status has to be assigned to y. You can name these columns however you want. For the status column take care that the following is true:
+That's already it! Your data.frame needs to have at least 2 columns: one for the survival time and one for the survival status. In aes(x,y), time has to be assigned to x and status has to be assigned to y. You can name these columns however you want. For the status column, events are specified like this:
 - NA: will be ignored
 - 1: death event
 - everything else: censored event
