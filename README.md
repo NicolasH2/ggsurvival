@@ -45,7 +45,7 @@ You probably also have a column by which you distinguish samples, e.g. mutation,
 
 ## Modify the graph
 
-First of all you can change the ticks if you like. Use the ticks parameter in the geom_surv function.
+First of all you can change the ticks if you like. Use the ticks parameter in the geom_surv function. By default this is "segment" (for geom_segment), and can be changed to "point" (for geom_point), but in theory also to "text" and other geoms (e.g. for geom_text you will then need define label in the aes).
 
 ``` r
 ggplot() + 
