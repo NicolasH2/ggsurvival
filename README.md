@@ -45,12 +45,19 @@ You probably also have a column by which you distinguish samples, e.g. mutation,
 
 ## Modify the graph
 
-You can modify the appearance of the graph as you usually would.
+You can modify the appearance of the graph as you usually would. However, geom_surv comes with an inbuilt option to set certain parameters to make the graph more pretty. Unlock this simply by specifying surv_pretty as TRUE.
 
 ``` r
 ggplot() +
+  geom_surv(aes(time, status, color=condition1, linetype=condition2), data=survtest, surv_pretty=T)
+
+#this will create exactly the same plot
+ggplot() +
   geom_surv(aes(time, status, color=condition1, linetype=condition2), data=survtest) +
-  scale_color_manual(values=c("blue","red"))
+  scale_color_manual(values=c("blue","red")) +
+  scale_x_continuous(expand=c(0,0)) +
+  scale_y_continuous(expand=c(0,0)) +
+  theme_classic()
 ```
 
 <img src="readme_files/surv2.png"/>
