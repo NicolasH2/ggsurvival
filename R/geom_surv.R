@@ -90,6 +90,7 @@ geom_surv <- function(data, mapping, ticks="segment", surv_pretty=FALSE, ...){
 
   data <- data[,c(time,status,color,linetype)]
   data <- as.data.frame(na.omit(data))
+  data[,time] <- as.numeric(as.character(data[,time]))
 
   if(length(color)>0 | length(linetype)>0){
     data$cOnDiTiOnS <- paste0(data[,color], data[,linetype])
