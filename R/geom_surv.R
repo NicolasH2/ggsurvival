@@ -70,7 +70,7 @@ geom_surv <- function(data, mapping, ticks="segment", surv_pretty=FALSE, ...){
       output,
       list(scale_color_manual(values=colors[1:ncolors]),
            scale_x_continuous(expand=c(0,0)),
-           scale_y_continuous(expand=c(0,0), limits=c(0,100),
+           scale_y_continuous(expand=c(0,0), limits=c(0,100)),
            theme_classic())
     )
   }
