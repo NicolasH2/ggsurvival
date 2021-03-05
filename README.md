@@ -1,14 +1,14 @@
 # ggsurvival
 
-This package lets you easily plot survival information in [ggplot2](https://ggplot2.tidyverse.org/) in a highly modifyable way. The survival curve is just a layer and you can adjust all ggplot2 parameters as you usually would.
+An [R](https://www.r-project.org) package that draws highly survival curves in [ggplot2](https://ggplot2.tidyverse.org/). The survival curve can easily be modified and added to an existing ggplot object. ggsurvival uses base R functions to convert the data into a format that is than vizualized using ggplot2's geom_path layer.
 
-## Installation
+# Installation
 Install the ggbrace package from the git repository:
 ``` r
 devtools::install_github("solatar/ggsurvival")
 ```
 
-## Create a survival curve
+# Create a survival curve
 Load the package, create your survival plot:
 ``` r
 library(ggsurvival)
@@ -43,7 +43,7 @@ The survival curve follows a couple of rules:
 
 You probably also have a column by which you distinguish samples, e.g. mutation, sex, etc. In ggsurvival you can have up to 2 of such columns. The parameters in geom_surv's aes() you can use for this are <b>color</b> and <b>linetype</b>.
 
-## Modify the graph
+# Modify the graph
 
 First of all you can change the ticks if you like. Use the ticks parameter in the geom_surv function. By default this is "segment" (for geom_segment), and can be changed to "point" (for geom_point), but in theory also to "text" and other geoms (e.g. for geom_text you will then need define label in the aes).
 
@@ -89,7 +89,7 @@ ggplot() +
 
 <img src="readme_files/surv5.png"/>
 
-## Plot lines and ticks seperately
+# Plot lines and ticks seperately
 
 ggsurvival also offers the functions geom_survLines and geom_survTicks to modify these components.
 
