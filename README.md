@@ -1,6 +1,6 @@
 # ggsurvival
 
-An [R](https://www.r-project.org) package that draws highly modifiable survival curves in [ggplot2](https://ggplot2.tidyverse.org/). The survival curve can easily be modified and added to an existing ggplot object. ggsurvival uses base R functions to convert the data into a format that is than vizualized using ggplot2's geom_path layer.
+An [R](https://www.r-project.org) package that draws highly modifiable survival curves in [ggplot2](https://ggplot2.tidyverse.org/). The survival curves can easily be modified and added to an existing ggplot object. ggsurvival uses base R functions to convert the data into a format that is than vizualized using ggplot2's geom_path layer.
 
 # Installation
 Install the ggbrace package from the git repository:
