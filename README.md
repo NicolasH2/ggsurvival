@@ -3,7 +3,7 @@
 An [R](https://www.r-project.org) package that draws highly modifiable survival curves in [ggplot2](https://ggplot2.tidyverse.org/). The survival curves can easily be modified and added to an existing ggplot object. ggsurvival uses base R functions to convert the data into a format that is than vizualized using ggplot2's geom_path layers.
 
 # Installation
-Install the ggbrace package from the git repository:
+Install the package from the git repository:
 ``` r
 devtools::install_github("solatar/ggsurvival")
 ```
