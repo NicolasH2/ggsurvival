@@ -5,7 +5,7 @@ An [R](https://www.r-project.org) package that draws highly modifiable survival 
 # Installation
 Install the package from the git repository:
 ``` r
-devtools::install_github("solatar/ggsurvival")
+devtools::install_github("nicolash2/ggsurvival")
 ```
 
 # Create a survival curve
