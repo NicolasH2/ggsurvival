@@ -4,17 +4,9 @@
 \alias{geom_surv}
 \title{create a survival curve as a layer ready to be added to a ggplot object}
 \usage{
-geom_surv(
-  mapping = NULL,
-  data = NULL,
-  ticks = "segment",
-  surv_pretty = FALSE,
-  ...
-)
+geom_surv(data, mapping, ticks = "segment", surv_pretty = FALSE, ...)
 }
 \arguments{
-\item{mapping}{aes object, created with aes(). Provide x (time) and y (status). Optionally you can provide color and linetype to distinguish conditions. For the status: NA will be irgnored, 1 = dropped out, 2 = dead, any other value = alive.}
-
 \item{data}{The data to be displayed in this layer. There are three
 options:
 
@@ -30,7 +22,11 @@ the plot data. The return value must be a \code{data.frame}, and
 will be used as the layer data. A \code{function} can be created
 from a \code{formula} (e.g. \code{~ head(.x, 10)}).}
 
-\item{surv_pretty, }{boolean, if TRUE sets certain options to make the plot more pretty}
+\item{mapping}{aes object, created with aes(). Provide x (time) and y (status). Optionally you can provide color and linetype to distinguish conditions. For the status: NA will be irgnored, 1 = dropped out, 2 = dead, any other value = alive.}
+
+\item{ticks}{character, either "segment" or "point". If specified as "point", additional geom_point options can be specified, such as shape}
+
+\item{surv_pretty}{boolean, if TRUE sets certain options to make the plot more pretty}
 
 \item{...}{Other arguments passed on to \code{\link[ggplot2:layer]{layer()}}. These are
 often aesthetics, used to set an aesthetic to a fixed value, like
@@ -54,6 +50,6 @@ survtest <- data.frame(
   condition = sample(c("wt","ko"), 50, replace = T)
 )
 
-ggplot() + geom_surv(aes(time, status, color=condition), data=survtest)
+ggplot() + geom_surv(data=survtest, aes(time, status, color=condition))
 
 }

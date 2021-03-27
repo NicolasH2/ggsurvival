@@ -5,10 +5,10 @@
 #' Imports:
 #' ggplot2
 #'
+#' @inheritParams geom_surv
 #' @inheritParams ggplot2::geom_path
 #' @import ggplot2
 #'
-#' @param mapping aes object, created with aes(). Provide x (time) and y (status). Optionally you can provide color and linetype to distinguish conditions. For the status: NA will be irgnored, 1 = dropped out, 2 = dead, any other value = alive.
 #' @return a ggplot2 layer object (geom_path for the lines) that can directly be added to a ggplot2 object
 #' @details calls the geom_surve function but only uses the lines, not the ticks
 #' @export

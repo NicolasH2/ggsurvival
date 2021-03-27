@@ -10,7 +10,8 @@
 #' @import ggplot2
 #'
 #' @param mapping aes object, created with aes(). Provide x (time) and y (status). Optionally you can provide color and linetype to distinguish conditions. For the status: NA will be irgnored, 1 = dropped out, 2 = dead, any other value = alive.
-#' @param surv_pretty, boolean, if TRUE sets certain options to make the plot more pretty
+#' @param ticks character, either "segment" or "point". If specified as "point", additional geom_point options can be specified, such as shape
+#' @param surv_pretty boolean, if TRUE sets certain options to make the plot more pretty
 #' @return a list of two ggplot2 layer objects (geom_path for the lines and geom_segment for the ticks) that can directly be added to a ggplot2 object
 #' @export
 #' @examples
@@ -26,12 +27,12 @@
 #' ggplot() + geom_surv(data=survtest, aes(time, status, color=condition))
 #'
 geom_surv <- function(data, mapping, ticks="segment", surv_pretty=FALSE, ...){
-  
+
   calculation <- .survconditions(data=data, mapping=mapping)
   plotLines <- calculation[["plotLines"]]
   plotTicks <- calculation[["plotTicks"]]
   mapping$y[[2]] <- expr(proportion)
-  
+
   output1 <- ggplot2::layer(
     data=plotLines,
     mapping=mapping,
@@ -40,15 +41,15 @@ geom_surv <- function(data, mapping, ticks="segment", surv_pretty=FALSE, ...){
     position="identity",
     params=list(...)
   )
-  
+
   mapping$linetype <- NULL
-  
+
   if(ticks %in% "segment"){
     mapping$xend <- mapping$x
     mapping$yend <- mapping$y
     mapping$yend[[2]] <- expr(proportion + 0.8)
   }
-    
+
   output2 <- ggplot2::layer(
     data=plotTicks,
     mapping=mapping,
@@ -58,14 +59,14 @@ geom_surv <- function(data, mapping, ticks="segment", surv_pretty=FALSE, ...){
     show.legend=FALSE,
     params=list(...)
   )
-  
+
   output <- list(lines=output1, ticks=output2)
-  
+
   if(surv_pretty){
     colors <- rep(c("blue","red","purple","orange","cyan4","green"), 10)
     colorcolumn <- as.character(mapping$colour[[2]])
     ncolors <- length(unique(plotLines[,colorcolumn]))
-    
+
     output <- c(
       output,
       list(scale_color_manual(values=colors[1:ncolors]),
@@ -74,9 +75,9 @@ geom_surv <- function(data, mapping, ticks="segment", surv_pretty=FALSE, ...){
            theme_classic())
     )
   }
-  
+
   return(output)
-  
+
 }
 
 #separate the input by conditions and apply the .survcalc function to each

@@ -4,11 +4,9 @@
 \alias{geom_survTicks}
 \title{create the ticks of a survival curve as a layer ready to be added to a ggplot object}
 \usage{
-geom_survTicks(mapping, data, ticks = "segment", ...)
+geom_survTicks(data, mapping, ticks = "segment", ...)
 }
 \arguments{
-\item{mapping}{aes object, created with aes(). Provide x (time) and y (status). Optionally you can provide color and linetype to distinguish conditions. For the status: NA will be irgnored, 1 = dropped out, 2 = dead, any other value = alive.}
-
 \item{data}{The data to be displayed in this layer. There are three
 options:
 
@@ -23,6 +21,10 @@ A \code{function} will be called with a single argument,
 the plot data. The return value must be a \code{data.frame}, and
 will be used as the layer data. A \code{function} can be created
 from a \code{formula} (e.g. \code{~ head(.x, 10)}).}
+
+\item{mapping}{aes object, created with aes(). Provide x (time) and y (status). Optionally you can provide color and linetype to distinguish conditions. For the status: NA will be irgnored, 1 = dropped out, 2 = dead, any other value = alive.}
+
+\item{ticks}{character, either "segment" or "point". If specified as "point", additional geom_point options can be specified, such as shape}
 
 \item{...}{Other arguments passed on to \code{\link[ggplot2:layer]{layer()}}. These are
 often aesthetics, used to set an aesthetic to a fixed value, like
@@ -50,7 +52,7 @@ survtest <- data.frame(
 )
 
 ggplot() +
-  geom_survLines(aes(time, status, color=condition), data=survtest)
-  geom_survTicks(aes(time, status, color=condition), data=survtest)
+  geom_survLines(survtest, aes(time, status, color=condition))
+  geom_survTicks(survtest, aes(time, status, color=condition))
 
 }
